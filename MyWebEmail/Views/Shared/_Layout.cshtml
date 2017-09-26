@@ -16,23 +16,72 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("明民邮箱", "Index", "Inbox", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="#" data-toggle="modal" data-target="#newMail">写邮件</a></li>
+                    <li>@Html.ActionLink("收件箱", "Index", "Inbox")</li>
+                    <li>@Html.ActionLink("草稿", "Index", "Draft")</li>
+                    <li>@Html.ActionLink("已发送邮件", "Index", "Sent")</li>
+                    <li>@Html.ActionLink("已删除邮件", "Index", "Trash")</li>
+                    <li>@Html.ActionLink("设置", "Index", "Setting")</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+        <br />
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="text-center">
+            <p>&copy; @DateTime.Now.Year 明民邮箱 开发者：郑明民</p>
         </footer>
+    </div>
+
+    <div class="modal fade" id="newMail">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">写邮件</h4>
+                </div>
+                <div class="modal-body">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="form-group">
+                            @Html.Label("Subject", "主题", new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBox("Subject", "", new { @class = "form-control", placeholder = "邮件主题" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("To", "收件人", new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextBox("To", "", new { @class = "form-control", placeholder = "收件人，多个发件人使用;分隔" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Body", "内容", new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.TextArea("Body", "", new { @class = "form-control", placeholder = "邮件内容", rows = 5 })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.Label("Attachment", "附件", new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                0 个&nbsp; <a href="#" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">添加</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">发送</button>
+                    <button type="button" class="btn btn-default">保存为草稿</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div>
 
     @Scripts.Render("~/bundles/jquery")

@@ -1,0 +1,129 @@
+﻿@using System.Collections.Generic;
+@using MyWebEmail.Models;
+@using System.Net.Mail;
+@model IEnumerable<Mail>
+
+@{
+    ViewBag.Title = "收件箱";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>收件箱</strong></div><br />
+    <div class="col-xs-4 col-lg-4">
+        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">全选</a>
+        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">删除</a>
+        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">转发</a>
+        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">回复</a>
+    </div>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <td></td>
+                <td>收件人</td>
+                <td>主题</td>
+                <td>包含附件</td>
+                <td>优先级</td>
+                <td>时间</td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (Mail mail in Model)
+        {
+            <tr>
+                <td><input type="checkbox" /></td>
+                <td>@string.Join(";", mail.To)</td>
+                <td>@mail.Subject</td>
+                <td>@((mail.Attachments == null || mail.Attachments.Count == 0) ? "无" : mail.Attachments.Count.ToString())</td>
+                <td>@(mail.Priority == MailPriority.Normal ? "正常" : mail.Priority == MailPriority.High ? "高" : "低")</td>
+                <td>@mail.CreatedDateTime.ToString("yyyy-MM-dd")</td>
+                <td><a href="#" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">查看</a></td>
+            </tr>
+        }
+
+
+    </table>
+    <hr />
+    <div class="text-center">
+        <ul class="pagination">
+            <li>
+                <a href="#">上一页</a>
+            </li>
+            <li>
+                <a href="#">1</a>
+            </li>
+            <li>
+                <a href="#">2</a>
+            </li>
+            <li>
+                <a href="#">...</a>
+            </li>
+            <li>
+                <a href="#">4</a>
+            </li>
+            <li>
+                <a href="#">5</a>
+            </li>
+            <li>
+                <a href="#">下一页</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">邮件详情</h4>
+            </div>
+            <div class="modal-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-group">
+                        @Html.Label("Subject", "主题", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBox("Subject", "user accept test 2", new { @class = "form-control", placeholder = "" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("From", "发件人", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBox("From", "zmmtest2017@sina.com.cn", new { @class = "form-control", placeholder = "" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("To", "收件人", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBox("To", "zmm2012@sina.com;zmmtest2017@sina.com.cn", new { @class = "form-control", placeholder = "" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Date", "时间", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextBox("Date", "2017-09-27", new { @class = "form-control", placeholder = "" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Body", "内容", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            @Html.TextArea("Body", "UAT 2 body", new { @class = "form-control", placeholder = "", rows = 5 })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Attachment", "附件", new { @class = "col-md-3 control-label" })
+                        <div class="col-md-9">
+                            1 个&nbsp; <a href="#" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">下载</a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal-footer">
+                @*<button type="button" class="btn btn-primary">保存</button>*@
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

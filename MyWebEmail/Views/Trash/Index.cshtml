@@ -1,0 +1,43 @@
+﻿@using System.Collections.Generic;
+@using MyWebEmail.Models;
+@using System.Net.Mail;
+@model IEnumerable<Mail>
+
+@{
+    ViewBag.Title = "已删除邮件";
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading"><strong>已删除邮件列表</strong></div><br />
+    <div class="col-xs-2 col-lg-2">
+        <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">清空</a>
+    </div>
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <td>收件人</td>
+                <td>主题</td>
+                <td>包含附件</td>
+                <td>优先级</td>
+                <td>时间</td>
+                <td></td>
+            </tr>
+        </thead>
+        @foreach (Mail mail in Model)
+        {
+            <tr>
+                <td>@string.Join(";", mail.To)</td>
+                <td>@mail.Subject</td>
+                <td>@((mail.Attachments == null || mail.Attachments.Count == 0) ? "无" : mail.Attachments.Count.ToString())</td>
+                <td>@(mail.Priority == MailPriority.Normal ? "正常" : mail.Priority == MailPriority.High ? "高" : "低")</td>
+                <td>@mail.CreatedDateTime.ToString("yyyy-MM-dd")</td>
+                <td><a href="#" class="btn btn-sm btn-default" data-toggle="modal" data-target="#myModal">重新编辑</a></td>
+            </tr>
+        }
+
+    </table>
+    <hr />
+</div>
+
+

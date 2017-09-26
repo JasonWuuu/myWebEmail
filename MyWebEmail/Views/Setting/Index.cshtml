@@ -1,0 +1,32 @@
+﻿@using System.Collections.Generic;
+@using MyWebEmail.Models;
+@using System.Net.Mail;
+@model IEnumerable<Mail>
+
+@{
+    ViewBag.Title = "邮箱设置";
+}
+    <div class="panel panel-default">
+        <div class="panel-heading"><strong>邮箱设置</strong></div><br />
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="form-group">
+                @Html.Label("Subject", "SMTP服务器", new { @class = "col-sm-4 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBox("Subject", "smtp.sina.com", new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("From", "POP3服务器", new { @class = "col-sm-4 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBox("From", "pop.sina.com", new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+        }
+        <hr />
+        <div class="panel-footer text-center">
+            <button type="button" class="btn btn-primary">保存</button>
+        </div>
+
+    </div>
+<br />
