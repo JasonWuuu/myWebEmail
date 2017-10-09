@@ -19,7 +19,7 @@ namespace MyWebEmail.Models
         public string Body { get; set; }
         public Encoding BodyEncoding { get; set; }
 
-        public bool IsBodyHtml { get; set; }
+        public string MediaType { get; set; }
 
         public MailPriority Priority { get; set; }
 
@@ -28,6 +28,9 @@ namespace MyWebEmail.Models
         public string Status { get; set; }
 
         public DateTime CreatedDateTime { get; set; }
+
+        public bool IsRead { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Mail() { }
 

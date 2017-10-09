@@ -1,3 +1,22 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+    private async saveMail(mailInfo) : any{
+        return await html.put('http://localhost:60201/saveToDraft', { mail: mailInfo });
+    }
+
+    saveMail(mail).then(function (status) {
+        if (status === 200) {
+            messageBox.show("sucess", "邮件保存成功！");
+        } else {
+            messageBox.show("warning", "邮件保存失败！");
+        }
+        
+    }, function (err) {
+        logger.log(error);
+    });
+
+
+</script>

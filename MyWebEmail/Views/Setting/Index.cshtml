@@ -17,9 +17,33 @@
                 </div>
             </div>
             <div class="form-group">
+                @Html.Label("Subject", "SMTP服务器端口", new { @class = "col-sm-4 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBox("Subject", "25", new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+            <div class="form-group">
                 @Html.Label("From", "POP3服务器", new { @class = "col-sm-4 control-label" })
                 <div class="col-sm-8">
                     @Html.TextBox("From", "pop.sina.com", new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Subject", "POP3服务器端口", new { @class = "col-sm-4 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBox("Subject", "110", new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Subject", "用户名", new { @class = "col-sm-4 control-label" })
+                <div class="col-sm-8">
+                    @Html.TextBox("Subject", "zmmtest2017@sina.com", new { @class = "form-control", placeholder = "" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.Label("Subject", "密码", new { @class = "col-sm-4 control-label" })
+                <div class="col-sm-8">
+                    @Html.Password("Subject", "995995995995", new { @class = "form-control", placeholder = ""})
                 </div>
             </div>
         }

@@ -20,7 +20,7 @@
         <thead>
             <tr>
                 <td></td>
-                <td>收件人</td>
+                <td>发件人</td>
                 <td>主题</td>
                 <td>包含附件</td>
                 <td>优先级</td>
@@ -32,7 +32,7 @@
         {
             <tr>
                 <td><input type="checkbox" /></td>
-                <td>@string.Join(";", mail.To)</td>
+                <td>@string.Join(";", mail.From)</td>
                 <td>@mail.Subject</td>
                 <td>@((mail.Attachments == null || mail.Attachments.Count == 0) ? "无" : mail.Attachments.Count.ToString())</td>
                 <td>@(mail.Priority == MailPriority.Normal ? "正常" : mail.Priority == MailPriority.High ? "高" : "低")</td>
@@ -122,6 +122,9 @@
             </div>
             <div class="modal-footer">
                 @*<button type="button" class="btn btn-primary">保存</button>*@
+                <button type="button" class="btn btn-default" data-dismiss="modal">回复</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">回复全部</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">删除</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div><!-- /.modal-content -->
