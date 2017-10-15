@@ -15,7 +15,7 @@ namespace UnitTestProject2
 
             Assert.AreEqual(expected, actual);
         }
-
+        [TestMethod]
         public void TestMethod2()
         {
             string expected = "{\"id\":2,\"name\":\"wucong\"}";
