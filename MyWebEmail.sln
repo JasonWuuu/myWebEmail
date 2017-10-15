@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWebEmail", "MyWebEmail\MyWebEmail.csproj", "{453325D1-7007-46E9-9A30-562CE470CE60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject2", "UnitTestProject2\UnitTestProject2.csproj", "{1BA50D40-49A3-4DA0-AC44-B44A2F8C41CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{7287DF3F-BF04-485A-88A1-82C4F022EFBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{453325D1-7007-46E9-9A30-562CE470CE60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{453325D1-7007-46E9-9A30-562CE470CE60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{453325D1-7007-46E9-9A30-562CE470CE60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BA50D40-49A3-4DA0-AC44-B44A2F8C41CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BA50D40-49A3-4DA0-AC44-B44A2F8C41CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BA50D40-49A3-4DA0-AC44-B44A2F8C41CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BA50D40-49A3-4DA0-AC44-B44A2F8C41CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7287DF3F-BF04-485A-88A1-82C4F022EFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7287DF3F-BF04-485A-88A1-82C4F022EFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7287DF3F-BF04-485A-88A1-82C4F022EFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7287DF3F-BF04-485A-88A1-82C4F022EFBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

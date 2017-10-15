@@ -1,4 +1,6 @@
-﻿using MyWebEmail.Models;
+﻿using BLL;
+using MyWebEmail.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,8 @@ namespace MyWebEmail.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Message = new UserService().GetUser();
+            
             List<Mail> sentMailList = _mailService.GetMails(Stauts.Received);
             return View(sentMailList);
         }
